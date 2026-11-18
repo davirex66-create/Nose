@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ECOCRACIA · Construye una sociedad sostenible</title>
+  <meta name="description" content="Videojuego educativo de estrategia y gestión sobre los Objetivos de Desarrollo Sostenible: gobierna una región y conviértela en una sociedad justa y sostenible.">
+  <meta name="theme-color" content="#13221a">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+  <!-- ============ MENÚ PRINCIPAL ============ -->
+  <section id="screen-menu" class="screen is-active" aria-label="Menú principal">
+    <div class="menu-bg" aria-hidden="true">
+      <svg class="menu-landscape" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#173a33"/><stop offset=".55" stop-color="#2f6b55"/><stop offset="1" stop-color="#a8c98a"/></linearGradient>
+          <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff4c4"/><stop offset=".6" stop-color="#f6d27a"/><stop offset="1" stop-color="#f6d27a" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="1600" height="900" fill="url(#sky)"/>
+        <circle class="m-sun" cx="1180" cy="300" r="170" fill="url(#sun)"/>
+        <g class="m-cloud" fill="#ffffff" opacity=".18"><ellipse cx="300" cy="170" rx="120" ry="26"/><ellipse cx="380" cy="150" rx="80" ry="24"/><ellipse cx="1000" cy="120" rx="140" ry="22"/></g>
+        <path d="M0 560 L180 400 L300 480 L470 330 L640 470 L780 380 L960 500 L1120 360 L1300 470 L1450 400 L1600 470 L1600 900 L0 900Z" fill="#3e6f5a" opacity=".75"/>
+        <path d="M470 330 L520 372 L500 380 L470 352 L445 372 Z M1120 360 L1160 395 L1140 398 L1120 380 L1098 396Z" fill="#e9efe6" opacity=".8"/>
+        <path d="M0 640 Q200 560 420 610 T860 600 T1300 590 T1600 600 L1600 900 L0 900Z" fill="#5d9a5c"/>
+        <g class="m-turbines" stroke="#eef3ea" stroke-width="4" fill="#eef3ea">
+          <g transform="translate(1260 520)"><line x1="0" y1="0" x2="0" y2="110"/><g class="blade"><path d="M0 0 L-4 -70 L4 -70Z"/><path d="M0 0 L-4 -70 L4 -70Z" transform="rotate(120)"/><path d="M0 0 L-4 -70 L4 -70Z" transform="rotate(240)"/></g></g>
+          <g transform="translate(1380 540) scale(.8)"><line x1="0" y1="0" x2="0" y2="110"/><g class="blade slow"><path d="M0 0 L-4 -70 L4 -70Z"/><path d="M0 0 L-4 -70 L4 -70Z" transform="rotate(120)"/><path d="M0 0 L-4 -70 L4 -70Z" transform="rotate(240)"/></g></g>
+        </g>
+        <path d="M0 720 Q300 650 640 700 T1200 690 T1600 700 L1600 900 L0 900Z" fill="#76b264"/>
+        <path d="M-20 820 C 300 760, 520 860, 820 790 S 1300 760, 1620 820 L1620 900 L-20 900Z" fill="#4c97c8" opacity=".85"/>
+        <g fill="#2f6b34">
+          <path d="M120 700 l22 -60 l22 60z"/><path d="M160 712 l18 -50 l18 50z"/><path d="M210 698 l24 -66 l24 66z"/>
+          <path d="M1460 712 l20 -56 l20 56z"/><path d="M1500 720 l16 -44 l16 44z"/>
+        </g>
+        <g transform="translate(700 640)">
+          <rect x="0" y="20" width="40" height="40" fill="#f4ead2"/><path d="M-6 20 L20 -4 L46 20Z" fill="#b5523b"/>
+          <rect x="54" y="0" width="30" height="60" fill="#efe3c6"/><path d="M50 0 L69 -24 L88 0Z" fill="#5c7fa8"/>
+          <rect x="96" y="26" width="36" height="34" fill="#f4ead2"/><path d="M90 26 L114 6 L138 26Z" fill="#a8483a"/>
+          <rect x="150" y="34" width="60" height="18" fill="#2a5f8f" transform="skewX(-25)"/><rect x="152" y="34" width="60" height="18" fill="none" stroke="#9cc6e6" stroke-width="2" transform="skewX(-25)"/>
+        </g>
+      </svg>
+      <div class="leaves"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="menu-card">
+      <img src="assets/logo.svg" class="menu-logo" alt="" width="112" height="112">
+      <h1 class="title">ECOCRACIA</h1>
+      <p class="subtitle">Construye una sociedad sostenible</p>
+      <nav class="menu-buttons" aria-label="Opciones">
+        <button class="btn btn-primary btn-lg" data-action="menu-new">🌱 Nueva partida</button>
+        <button class="btn btn-lg" id="btn-continue" data-action="menu-continue">Continuar partida</button>
+        <button class="btn btn-lg" data-action="open-load">📂 Cargar partida</button>
+        <button class="btn btn-lg" data-action="how-to-play">📖 Cómo jugar</button>
+        <button class="btn btn-lg" data-action="credits">🌿 Créditos</button>
+      </nav>
+      <p id="storage-warning" class="warn-text" hidden>⚠️ Tu navegador bloquea el almacenamiento local: podrás jugar, pero no guardar.</p>
+      <div class="menu-ods" aria-hidden="true">
+        <span style="background:#E5243B">1</span><span style="background:#C5192D">4</span><span style="background:#FCC30B">7</span><span style="background:#A21942">8</span><span style="background:#DD1367">10</span><span style="background:#FD9D24">11</span><span style="background:#BF8B2E">12</span><span style="background:#3F7E44">13</span><span style="background:#56C02B">15</span>
+      </div>
+      <p class="menu-foot">Videojuego educativo sobre los Objetivos de Desarrollo Sostenible · Agenda 2030</p>
+    </div>
+  </section>
+
+  <!-- ============ PARTIDA ============ -->
+  <section id="screen-game" class="screen" aria-label="Partida">
+    <header id="topbar">
+      <div class="brand" title="ECOCRACIA">
+        <img src="assets/logo.svg" alt="" width="34" height="34">
+        <div class="brand-text"><b>ECOCRACIA</b><small id="region-name"></small></div>
+      </div>
+      <div id="res-money" class="res-money" data-tip="Dinero disponible y balance previsto para el próximo año"></div>
+      <div id="indicators" class="indicators"></div>
+      <div class="top-actions">
+        <span id="save-indicator" class="save-indicator" data-tip="Partida guardada automáticamente">✔</span>
+        <button class="icon-btn" data-action="open-save" data-tip="Guardar partida" aria-label="Guardar partida">💾</button>
+        <button class="icon-btn" data-action="open-load" data-tip="Cargar partida" aria-label="Cargar partida">📂</button>
+        <button class="icon-btn" data-action="game-menu" data-tip="Menú" aria-label="Menú">☰</button>
+      </div>
+    </header>
+
+    <nav id="sidenav" aria-label="Secciones">
+      <button data-action="panel" data-panel="mapa"><span>🗺️</span><small>Mapa</small></button>
+      <button data-action="panel" data-panel="construir"><span>🏗️</span><small>Construir</small></button>
+      <button data-action="panel" data-panel="economia"><span>💰</span><small>Economía</small></button>
+      <button data-action="panel" data-panel="gobierno"><span>🏛️</span><small>Gobierno</small></button>
+      <button data-action="panel" data-panel="ods"><span>🎯</span><small>ODS</small></button>
+      <button data-action="panel" data-panel="historial"><span>📜</span><small>Historial</small></button>
+    </nav>
+
+    <main id="stage">
+      <div id="map-wrap">
+        <svg id="map" role="img" aria-label="Mapa de la región"></svg>
+        <div class="map-vignette" aria-hidden="true"></div>
+        <div class="map-controls">
+          <button class="icon-btn" data-action="zoom-in" data-tip="Acercar" aria-label="Acercar">＋</button>
+          <button class="icon-btn" data-action="zoom-out" data-tip="Alejar" aria-label="Alejar">－</button>
+          <button class="icon-btn" data-action="zoom-reset" data-tip="Ver todo el mapa" aria-label="Ver todo el mapa">⟲</button>
+        </div>
+        <div id="placement-banner" class="placement-banner"></div>
+        <aside id="tile-card" class="tile-card" aria-live="polite"></aside>
+      </div>
+      <aside id="panel" class="panel" aria-label="Panel">
+        <header class="panel-head"><h2 id="panel-title"></h2><button class="icon-btn" data-action="close-panel" aria-label="Cerrar panel">✕</button></header>
+        <div id="panel-body" class="panel-body"></div>
+      </aside>
+    </main>
+
+    <footer id="turnbar">
+      <div class="tb-year-box">
+        <div class="tb-label">AÑO</div>
+        <div id="tb-year" class="tb-year">2025</div>
+      </div>
+      <div class="tb-info">
+        <div id="tb-turn" class="tb-turn"></div>
+        <button id="tb-goals" class="tb-goals" data-action="panel" data-panel="ods" data-tip="Condiciones de victoria cumplidas"></button>
+      </div>
+      <button id="btn-event" class="btn btn-event" data-action="event-open" hidden></button>
+      <button id="btn-next" class="btn btn-next" data-action="next-year">Pasar al siguiente año <span>⏭</span></button>
+    </footer>
+  </section>
+
+  <div id="modal-root"></div>
+  <div id="toasts" aria-live="polite"></div>
+  <div id="tooltip" role="tooltip"></div>
+  <div id="tutorial-layer"></div>
+
+  <noscript><p style="padding:2rem;color:#fff">ECOCRACIA necesita JavaScript para funcionar.</p></noscript>
+
+  <script src="js/utils.js"></script>
+  <script src="js/data/indicators.js"></script>
+  <script src="js/data/buildings.js"></script>
+  <script src="js/data/policies.js"></script>
+  <script src="js/data/events.js"></script>
+  <script src="js/data/ods.js"></script>
+  <script src="js/mapgen.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/save.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/panels.js"></script>
+  <script src="js/tutorial.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
